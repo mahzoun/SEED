@@ -22,10 +22,6 @@ uint64_t SEED::F(const uint64_t & right, const std::pair <uint32_t, uint32_t> & 
 }
 
 std::string SEED::run(const std::string & DATA){
-    if (!keyset){
-        throw std::runtime_error("Error: Key has not been set.");
-    }
-
     if (DATA.size() != 16){
         throw std::runtime_error("Error: Data must be 128 bits in length.");
     }
@@ -39,23 +35,11 @@ std::string SEED::run(const std::string & DATA){
     return unhexlify(makehex(R, 16) + makehex(L, 16));
 }
 
-SEED::SEED()
-        : SymAlg(),
-          mode(""),
-          k()
-{}
-
-SEED::SEED(const std::string & KEY)
-        : SEED()
-{
+SEED::SEED(const std::string & KEY){
     setkey(KEY);
 }
 
 void SEED::setkey(const std::string & KEY){
-    if (keyset){
-        throw std::runtime_error("Error: Key has already been set.");
-    }
-    std::cout << KEY << "\t" << KEY.size() << std::endl;
     if (KEY.size() != 16){
         throw std::runtime_error("Error: Key must be 128 bits in length.");
     }
@@ -77,7 +61,6 @@ void SEED::setkey(const std::string & KEY){
             K2 = T >> 32; K3 = T & mod32;
         }
     }
-    keyset = true;
 }
 
 std::string SEED::encrypt(const std::string & DATA){
