@@ -55,7 +55,7 @@ void SEED::setkey(const std::string & KEY){
     if (keyset){
         throw std::runtime_error("Error: Key has already been set.");
     }
-
+    std::cout << KEY << "\t" << KEY.size() << std::endl;
     if (KEY.size() != 16){
         throw std::runtime_error("Error: Key must be 128 bits in length.");
     }
