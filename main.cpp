@@ -24,10 +24,8 @@ int main() {
     for(int i = 0; i < 16; i++)
         cout << bitset<8>(key[i]);
     cout << endl;
-    uint64_t pr[32] = {0}, tot[32] = {0};
-    map<uint32_t, uint32_t> counter;
-    uint32_t input_diff = 0;
-    for(input_diff = 0; input_diff < 32; input_diff++) {
+    for(uint32_t input_diff = 0; input_diff < 32; input_diff++) {
+        map<uint32_t, uint32_t> counter;
         ofstream fout;
         string output_file = to_string(input_diff);
         fout.open (output_file);
