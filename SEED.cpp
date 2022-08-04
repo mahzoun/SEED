@@ -40,6 +40,7 @@ SEED::SEED(const std::string & KEY){
 }
 
 void SEED::setkey(const std::string & KEY){
+    std::cout << KEY << "\t" << KEY.size() << "\n";
     if (KEY.size() != 16){
         throw std::runtime_error("Error: Key must be 128 bits in length.");
     }
